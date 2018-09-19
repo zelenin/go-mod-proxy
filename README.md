@@ -17,7 +17,9 @@ import (
 func main() {
     // implementation of `gomodproxy.Provider` interface
     provider := proxy.ProviderImplementation()
+    
     handler := gomodproxy.New(provider)
+    
     server := &http.Server{
         Addr:    ":8080",
         Handler: handler,
@@ -26,6 +28,8 @@ func main() {
     log.Fatal(server.ListenAndServe())
 }
 ```
+
+Then run:
 
 ```bash
 GOPROXY=http://go-mod-proxy.local:8080 go build ...
